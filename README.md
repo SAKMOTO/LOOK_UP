@@ -345,5 +345,5 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 ## Step 8: Generating your API key
 Go to the site https://serpapi.com/search-api and create your account with your Google account. This is a similar process as you signup on GeeksforGeeks. While generating your API key make sure to select the free trial option and proceed further. After going to the site shown above you will get to see the below screen. Simply sign in with your credentials and proceed further.
 
-![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20250324112934450081/lens-app-design-ui.png)
+![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20210227102715/Webpnetresizeimage.png)
 
