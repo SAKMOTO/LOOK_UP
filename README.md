@@ -70,7 +70,8 @@ To create a new project in Android Studio please refer to How to Create/Start a 
 Navigate to the app > Gradle Scripts > build.gradle.kts file and add the following dependencies. We have added the dependencies for Firebase ML kit for image labelling, Volley for API Calls and Glide for image loading.
 
 
-```dependencies {
+```
+dependencies {
     ...
     implementation ("com.google.mlkit:image-labeling:17.0.9")
     implementation ("com.android.volley:volley:1.2.1")
