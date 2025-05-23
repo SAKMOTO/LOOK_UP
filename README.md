@@ -53,7 +53,8 @@ This app was built from scratch to enhance accessibility and creativity using ex
 
 ![Banner](<br>
 
-![Banner]([https://your-image-url.com/banner.png](https://i.pinimg.com/originals/47/35/1d/47351df91d191c59c987a5f6ff4c80f7.jpg)) <!-- Replace with your actual banner image if any -->
+![Banner](![47351df91d191c59c987a5f6ff4c80f7](https://github.com/user-attachments/assets/bb9343dd-64d7-49ad-ba1f-f04d2f4b100f)
+) <!-- Replace with your actual banner image if any -->
 
 ---) <!-- Replace with your actual banner image if any -->
 
