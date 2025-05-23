@@ -55,6 +55,10 @@ This app was built from scratch to enhance accessibility and creativity using ex
 ## Steps to Implement Look Up in Android
 
 📸 How It Works
-Step 1: Create a New Android Project
-Start a new Android project in Android Studio.
+Step 1: Create a New Project
+To create a new project in Android Studio please refer to How to Create/Start a New Project in Android Studio.
+![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20250324112058953365/lens-app-dir.png)
+
+
+
 
