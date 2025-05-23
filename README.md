@@ -55,7 +55,8 @@ This app was built from scratch to enhance accessibility and creativity using ex
 ## Steps to Implement Look Up in Android
 
 📸 How It Works
-Step 1: Create a New Project
+
+## Step 1: Create a New Project
 To create a new project in Android Studio please refer to How to Create/Start a New Project in Android Studio.
 
 
@@ -64,5 +65,15 @@ To create a new project in Android Studio please refer to How to Create/Start a 
 ![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20250324112058953365/lens-app-dir.png)
 
 
+## Step 2: Adding dependency for language translation and View Binding
 
+Navigate to the app > Gradle Scripts > build.gradle.kts file and add the following dependencies. We have added the dependencies for Firebase ML kit for image labelling, Volley for API Calls and Glide for image loading.
+
+
+```dependencies {
+    ...
+    implementation ("com.google.mlkit:image-labeling:17.0.9")
+    implementation ("com.android.volley:volley:1.2.1")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+}
 
