@@ -502,6 +502,7 @@ public class MainActivity extends AppCompatActivity {
 Now run your app and see the output of the app. Make sure to change your API key before running the app. 
 Note: The search results might not be accurate upto an extent.
 
+[![Watch the demo](https://example.com/demo-thumbnail.png)](https://media.geeksforgeeks.org/wp-content/uploads/20250324115112858680/google-lens-app.mp4)
 
-(https://media.geeksforgeeks.org/wp-content/uploads/20250324115112858680/google-lens-app.mp4)
+
 
