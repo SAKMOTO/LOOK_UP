@@ -162,4 +162,4 @@ activity_main.xml:
 </LinearLayout>
 ```
 ## Design UI:
-![Screenshot]([https://media.geeksforgeeks.org/wp-content/uploads/20250324112058953365/lens-app-dir.png](https://media.geeksforgeeks.org/wp-content/uploads/20250324112934450081/lens-app-design-ui.png))
+![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20250324112934450081/lens-app-design-ui.png)
