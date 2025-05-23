@@ -49,16 +49,8 @@ This app was built from scratch to enhance accessibility and creativity using ex
 - **Image Loading**: Glide
 - **UI**: XML Layouts + View Binding
   
-<br>
+![Logo](C:\Users\moham\Downloads)
 
-![Banner](<br>
-
-![Banner](C:\Users\moham\Downloads)
-) <!-- Replace with your actual banner image if any -->
-
----) <!-- Replace with your actual banner image if any -->
-
----
 
 ## Steps to Implement Look Up in Android
 
