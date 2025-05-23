@@ -60,8 +60,9 @@ To create a new project in Android Studio please refer to How to Create/Start a 
 
 
 <br>
+
 ![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20250324112058953365/lens-app-dir.png)
-</br>
+
 
 
 
