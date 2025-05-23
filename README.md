@@ -79,6 +79,87 @@ dependencies {
 }
 
 ```
+Add View Binding support by adding the following code anywhere under the android{} scope
+```
 buildFeatures {
     viewBinding = true
 }
+```
+## Step 3: Adding permissions to access the Internet in your Android Apps AndroidManifest file
+
+Navigate to the app > AndroidManifest.xml file and add the below code to it.
+```
+<uses-feature
+    android:name="android.hardware.camera"
+    android:required="true" />
+<uses-permission android:name="android.permission.INTERNET" />
+```
+## Step 4: Working with activity_main.xml file
+
+Navigate to the app > res > layout > activity_main.xml and add the below code to that file. Below is the code for the activity_main.xml file. 
+
+activity_main.xml:
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="16dp"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/layoutButtons"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/snap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:text="Snap"
+            android:padding="16dp"
+            android:lines="2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/getSearchResults"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:lines="2"
+            android:text="Get Search Results"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/search_result_rv_item"
+        android:layout_margin="16dp"/>
+
+</LinearLayout>
+```
+## Design UI:
+![Screenshot]([https://media.geeksforgeeks.org/wp-content/uploads/20250324112058953365/lens-app-dir.png](https://media.geeksforgeeks.org/wp-content/uploads/20250324112934450081/lens-app-design-ui.png))
