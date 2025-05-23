@@ -347,3 +347,158 @@ Go to the site https://serpapi.com/search-api and create your account with your 
 
 ![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20210227102715/Webpnetresizeimage.png)
 
+After proceeding further you have to simply Navigate to the My Account > Dashboard option to open the below screen. On this screen, you will get to see your API key.
+
+![Screenshot](https://media.geeksforgeeks.org/wp-content/uploads/20240730222236/apiss.png)
+
+
+## Step 9: Working with the MainActivity file
+Go to the MainActivity file and refer to the following code. Below is the code for the MainActivity file. Comments are added inside the code to understand the code in more detail.
+
+```
+package org.geeksforgeeks.demo;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.widget.Toast;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.label.ImageLabel;
+import com.google.mlkit.vision.label.ImageLabeling;
+import com.google.mlkit.vision.label.defaults.ImageLabelerOptions;
+import org.geeksforgeeks.demo.databinding.ActivityMainBinding;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+    private Bitmap imageBitmap;
+    private Adapter adapter;
+    private ArrayList<DataModel> dataModalArrayList = new ArrayList<>();
+    private String title, link, displayedLink, snippet;
+    private ActivityResultLauncher<Intent> takeImageLauncher;
+
+    private ActivityMainBinding binding;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Set up RecyclerView
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        adapter = new Adapter(dataModalArrayList, this);
+
+        // Button to capture an image
+        binding.snap.setOnClickListener(v -> dispatchTakePictureIntent());
+
+        // Button to process image and fetch search results
+        binding.getSearchResults.setOnClickListener(v -> processImage());
+
+        // Register image capture activity result launcher
+        takeImageLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                this::handleImageCaptureResult
+        );
+    }
+
+    // Handle image capture result
+    private void handleImageCaptureResult(ActivityResult result) {
+        if (result.getResultCode() == RESULT_OK) {
+            Intent data = result.getData();
+            if (data != null && data.getExtras() != null) {
+                imageBitmap = (Bitmap) data.getExtras().get("data");
+                Glide.with(this).load(imageBitmap).into(binding.image); // Display captured image
+            }
+        }
+    }
+
+    // Process captured image and fetch search results
+    private void processImage() {
+        dataModalArrayList.clear();
+
+        if (imageBitmap == null) {
+            Toast.makeText(this, "No image found. Please capture an image first.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        InputImage image = InputImage.fromBitmap(imageBitmap, 0);
+        ImageLabeling labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS);
+
+        // Perform image labeling
+        labeler.process(image)
+                .addOnSuccessListener(labels -> {
+                    if (!labels.isEmpty()) {
+                        String searchQuery = labels.get(0).getText();
+                        Toast.makeText(MainActivity.this, searchQuery, Toast.LENGTH_SHORT).show();
+                        searchData(searchQuery);
+                    } else {
+                        Toast.makeText(MainActivity.this, "No labels detected in the image.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> Toast.makeText(MainActivity.this, "Failed to detect image.", Toast.LENGTH_SHORT).show());
+    }
+
+    // Perform search query using API
+    @SuppressLint("NotifyDataSetChanged")
+    private void searchData(String searchQuery) {
+        String apiKey = "YOUR_API_KEY";
+        String url = "https://serpapi.com/search.json?q=" + searchQuery.trim() +
+                "&location=Delhi,India&hl=en&gl=us&google_domain=google.com&api_key=" + apiKey;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, url, null,
+                response -> {
+                    try {
+                        JSONArray organicResultsArray = response.getJSONArray("organic_results");
+                        for (int i = 0; i < organicResultsArray.length(); i++) {
+                            JSONObject organicObj = organicResultsArray.getJSONObject(i);
+                            title = organicObj.optString("title", "");
+                            link = organicObj.optString("link", "");
+                            displayedLink = organicObj.optString("displayed_link", "");
+                            snippet = organicObj.optString("snippet", "");
+
+                            dataModalArrayList.add(new DataModel(title, link, displayedLink, snippet));
+                        }
+
+                        adapter.notifyDataSetChanged();
+                        binding.recyclerView.setAdapter(adapter);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> {
+                    error.printStackTrace();
+                    Toast.makeText(MainActivity.this, "No result found for the search query.", Toast.LENGTH_SHORT).show();
+                });
+
+        Volley.newRequestQueue(this).add(jsonObjectRequest);
+    }
+
+    // Launch camera to capture image
+    @SuppressLint("QueryPermissionsNeeded")
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            takeImageLauncher.launch(takePictureIntent);
+        }
+    }
+}
+```
+Now run your app and see the output of the app. Make sure to change your API key before running the app. 
+Note: The search results might not be accurate upto an extent.
+
