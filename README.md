@@ -1,4 +1,6 @@
 # LOOK_UP
+
+![Screenshot](https://i.pinimg.com/564x/29/13/32/291332270f746fdb997843ebed3181a7.jpg)
 Look Up is an Android application that brings the power of visual search to your fingertips. Inspired by the functionality of Google Lens, this app allows users to capture or select an image, scan it using integrated vision tools, and instantly search the web (Google) for relevant information about the object, text, product, or place in the image.
 🔍 Look Up – Visual Search Simplified
 Snap it. Scan it. Search it.
@@ -49,7 +51,7 @@ This app was built from scratch to enhance accessibility and creativity using ex
 - **Image Loading**: Glide
 - **UI**: XML Layouts + View Binding
   
-![Screenshot](https://i.pinimg.com/564x/29/13/32/291332270f746fdb997843ebed3181a7.jpg)
+
 
 
 ## Steps to Implement Look Up in Android
