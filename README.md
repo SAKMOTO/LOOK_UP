@@ -24,6 +24,12 @@ Look Up is an independently developed application and is not affiliated with, en
 This app was built from scratch to enhance accessibility and creativity using existing public tools.
 
 🌟 Why Use Look Up?
+- 📸 Snap a photo and detect objects in real-time.
+- 🧠 Image labeling using **Google ML Kit**.
+- 🌐 Fetches search results using **SERP API**.
+- 🖼️ Beautiful UI with **RecyclerView** to show results.
+- 💡 Fast, lightweight, and responsive.
+  
 🚀 Lightweight and fast
 
 ✅ Simple user interface
@@ -34,6 +40,28 @@ This app was built from scratch to enhance accessibility and creativity using ex
 
 🔒 No data stored – your privacy is respected
 
+## ⚙️ Tech Stack
+
+- **Language**: Java
+- **ML Framework**: Google ML Kit – Image Labeling
+- **Search API**: SerpAPI (https://serpapi.com/)
+- **Networking**: Volley
+- **Image Loading**: Glide
+- **UI**: XML Layouts + View Binding
+  
+<br>
+
+![Banner](<br>
+
+![Banner]([https://your-image-url.com/banner.png](https://i.pinimg.com/originals/47/35/1d/47351df91d191c59c987a5f6ff4c80f7.jpg)) <!-- Replace with your actual banner image if any -->
+
+---) <!-- Replace with your actual banner image if any -->
+
+---
 
 ## Steps to Implement Look Up in Android
+
+📸 How It Works
+Step 1: Create a New Android Project
+Start a new Android project in Android Studio.
 
