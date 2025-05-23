@@ -34,3 +34,6 @@ This app was built from scratch to enhance accessibility and creativity using ex
 
 🔒 No data stored – your privacy is respected
 
+
+##Steps to Implement Look Up in Android
+
